@@ -33,22 +33,21 @@ fun main() {
             cubeCounts.forEach { cubeCount ->
                 //separate number and colour and filter out empty strings
                 val cubeDetails = cubeCount.split(" ").filter { it.isNotEmpty() }
-                val cubeCount = cubeDetails[0].toInt()
-                val cubeColour = cubeDetails[1].trim()
+                val (cubeCount, cubeColour) = cubeDetails
                 when (cubeColour) {
                     "blue" -> {
-                        if (cubeCount > BLUE_CUBE_AMOUNT) cubeGame.isValidGame = false
-                        cubeGame.blueCount = cubeGame.blueCount.coerceAtLeast(cubeCount)
+                        if (cubeCount.toInt() > BLUE_CUBE_AMOUNT) cubeGame.isValidGame = false
+                        cubeGame.blueCount = cubeGame.blueCount.coerceAtLeast(cubeCount.toInt())
                     }
 
                     "red" -> {
-                        if (cubeCount > RED_CUBE_AMOUNT) cubeGame.isValidGame = false
-                        cubeGame.redCount = cubeGame.redCount.coerceAtLeast(cubeCount)
+                        if (cubeCount.toInt() > RED_CUBE_AMOUNT) cubeGame.isValidGame = false
+                        cubeGame.redCount = cubeGame.redCount.coerceAtLeast(cubeCount.toInt())
                     }
 
                     "green" -> {
-                        if (cubeCount > GREEN_CUBE_AMOUNT) cubeGame.isValidGame = false
-                        cubeGame.greenCount = cubeGame.greenCount.coerceAtLeast(cubeCount)
+                        if (cubeCount.toInt() > GREEN_CUBE_AMOUNT) cubeGame.isValidGame = false
+                        cubeGame.greenCount = cubeGame.greenCount.coerceAtLeast(cubeCount.toInt())
                     }
                 }
             }
